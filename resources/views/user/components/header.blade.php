@@ -64,7 +64,7 @@
                             @if(auth()->check())
                                 <li><a href=""><i class="fa fa-user"></i> {{ auth()->user()->name}}</a></li>
                                 <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
-                                <li><a href="{{ route('showCart') }}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                <li><a href="{{ route('showCart') }}"><span class="cartCount" >0</span><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                 <li><a href="{{ route('logout') }}"><i class="fa fa-lock"></i> Logout</a></li>
                             @else
                                 <li><a href="#"><i class="fa fa-user"></i> Tai khoan </a></li>
