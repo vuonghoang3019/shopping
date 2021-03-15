@@ -64,12 +64,16 @@
                             @if(auth()->check())
                                 <li><a href=""><i class="fa fa-user"></i> {{ auth()->user()->name}}</a></li>
                                 <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
-                                <li><a href="{{ route('showCart') }}"><span class="cartCount" >0</span><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                <li><a href="{{ route('showCart') }}"><span class="cartCount" >
+                                               {{ count($carts) }}
+                                        </span><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                 <li><a href="{{ route('logout') }}"><i class="fa fa-lock"></i> Logout</a></li>
                             @else
-                                <li><a href="#"><i class="fa fa-user"></i> Tai khoan </a></li>
+                                <li><a href="#"><i class="fa fa-user"></i> User </a></li>
                                 <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
-                                <li><a href="{{ route('showCart') }}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                <li><a href="{{ route('showCart') }}"><span class="cartCount" >
+                                             {{ count($carts) }}
+                                        </span><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                 <li><a href="{{ route('loginUser') }}"><i class="fa fa-lock"></i> Login</a></li>
                             @endif
                         </ul>
@@ -100,6 +104,7 @@
 
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
+                        <label for="">lable</label>
                         <input type="text" placeholder="Search"/>
                     </div>
                 </div>
