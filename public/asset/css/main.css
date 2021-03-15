@@ -1278,7 +1278,19 @@ h2.title {
     font-size: 15px;
     margin-top: 20px;
 }
-
+span.cartCount
+{
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    width: 14px;
+    height: 14px;
+    background: #f94e3f;
+    color: #fff;
+    text-align: center;
+    line-height: 1;
+    border-radius: 4px;
+}
 .shop-details-tab {
     border: 1px solid #F7F7F0;
     margin-bottom: 75px;
