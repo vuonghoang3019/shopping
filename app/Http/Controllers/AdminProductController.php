@@ -159,4 +159,12 @@ class AdminProductController extends Controller
     {
         return $this->deleteModelTrait($id, $this->product);
     }
+    public function action($id)
+    {
+        $product = $this->product->find($id);
+        $product->update([
+            'status' => $product->status == 1 ? 0 : 1
+        ]);
+        return redirect()->route('products.index');
+    }
 }

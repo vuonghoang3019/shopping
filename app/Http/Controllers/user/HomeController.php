@@ -34,7 +34,7 @@ class HomeController extends Controller
         try {
             $sliders = $this->slider->latest()->take(3)->get();
             $categories = $this->category->newQuery()->where('parent_id', 0)->with(['categoryChild'])->get();
-            $products = $this->product->latest()->take(6)->get();
+            $products = $this->product->where('status',1)->latest()->take(6)->get();
             $productRecommend = $this->product->latest('view', 'desc')->take(6)->get();
             $categoryLimit = $this->category->newQuery()->where('parent_id', 0)->with(['categoryChild'])->take(3)->get();
             return view('user.home.home', compact('sliders', 'categories', 'products', 'productRecommend', 'categoryLimit'));
