@@ -44,18 +44,15 @@
                                     <i class="fa fa-angle-right"></i>
                                 </a>
                             </div>
-
                         </div>
                         <div class="col-sm-7">
                             <div class="product-information"><!--/product-information-->
                                 <h2>{{ $productDetails->name }}</h2>
                                 <span>
 									<span>{{ number_format($productDetails->price) }} VNĐ</span>
-
 									<label>Quantity: </label>
 									 <input type="number" class="cart_add" id="num" value="1"
                                             name="quantity" min="1" max="100">
-
 								</span>
                                 <p><b>Availability:</b> In Stock</p>
                                 <p><b>Condition:</b>
@@ -75,17 +72,68 @@
                         </div>
                     </div>
                     <!--/product-details-->
-
                     <div class="category-tab shop-details-tab"><!--category-tab-->
                         <div class="col-sm-12">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#reviews" data-toggle="tab">Reviews</a></li>
+                                {{--                                <li class="active"><a href="#details" data-toggle="tab">Details</a></li>--}}
+                                <li><a href="#reviews" data-toggle="tab">Rating</a></li>
                             </ul>
                         </div>
+
                         <div class="tab-content">
-
-
+                            {{--                            <div class="tab-pane fade " id="details">--}}
+                            {{--                                <div class="product-image-wrapper">--}}
+                            {{--                                    <div class="single-products">--}}
+                            {{--                                        <div class="productinfo text-center">--}}
+                            {{--                                            <p> {!! $productDetails->content !!} </p>--}}
+                            {{--                                        </div>--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
                             <div class="tab-pane fade active in" id="reviews">
+                                <div class="component_rating_content">
+                                    <div class="rating-item col-md-2">
+                                        <span class="fa fa-star rating_item">
+                                            <b>2.5</b>
+                                        </span>
+                                    </div>
+                                    <div class="list_rating col-md-6">
+                                        @for($i = 1; $i <= 5; $i++)
+                                            <div class="item_rating">
+                                                <div class="item_rating_star">
+                                                    {{ $i }} <span class="fa fa-star"></span>
+                                                </div>
+                                                <div class="item_rating_line">
+                                                    <span><b></b></span>
+                                                </div>
+                                                <div class="item_rating_number">
+                                                    <a href="">209 rate</a>
+                                                </div>
+                                            </div>
+                                        @endfor
+                                    </div>
+                                    <div class="col-md-4 ">
+                                        <a href="#" class="send-rate js_rating_action">Gửi đánh giá của bạn ei</a>
+                                    </div>
+                                </div>
+                                <?php
+                                    $listRate = [
+                                        1 => 'Không thích',
+                                        2 => 'Tạm được',
+                                        3 => 'Bình thường',
+                                        4 => 'Rất tốt',
+                                        5 => 'Tuyệt vời',
+                                    ];
+                                ?>
+                                <div class="col-sm-12" style="display: flex;margin-top: 15px; font-size: 15px">
+                                    <p>Chọn đánh giá của bạn</p>
+                                    <span style="margin: 0 15px" class="list_star">
+                                        @for($i = 1; $i<= 5; $i++)
+                                            <i class="fa fa-star"></i>
+                                        @endfor
+                                    </span>
+                                    <span class="list_text">Tốt</span>
+                                </div>
                                 <div class="col-sm-12">
                                     <ul>
                                         <li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
@@ -94,7 +142,6 @@
                                         </li>
                                     </ul>
                                     <p><b>Write Your Review</b></p>
-
                                     <form action="#">
 										<span>
 											<input type="text" placeholder="Your Name"/>
@@ -107,9 +154,9 @@
                                     </form>
                                 </div>
                             </div>
-
                         </div>
-                    </div><!--/category-tab-->
+
+                    </div>
 
                     @include('user.home.components.recommendProduct')
 
