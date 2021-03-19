@@ -2092,6 +2092,14 @@ textarea {
     direction: block;
     overflow: hidden;
 }
+.component_rating_content
+{
+    border: 1px solid #dedede;
+}
+.list_rating
+{
+    margin-bottom: 15px;
+}
 .rating_item
 {
     font-size: 50px;
@@ -2118,12 +2126,61 @@ textarea {
     width: 100%;
     height: 6px;
     display: block;
-    border: 1px solid #dedede
+    border: 1px solid #dedede;
+    background-color: #dedede;
+}
+.item_rating_line b
+{
+    background-color: #f25800;
+    width: 30%;
+    display: block;
+    height: 100%;
+    border-radius: 5px;
 }
 .item_rating_number
 {
     width: 20%;
     margin-left: 20px;
+}
+.list_text
+{
+    display: inline-block ;
+    margin-left: 10px;
+    position: relative;
+    background-color: #52b858;
+    color: #fff;
+    padding: 2px 8px;
+    box-sizing: border-box;
+    font-size: 12px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+}
+.list_text:after
+{
+    right: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(82,184,88,0);
+    border-right-color: #52b858;
+    border-width: 6px;
+    margin-top: -6px;
+}
+.list_star i:hover
+{
+    cursor: pointer;
+}
+.send-rate
+{
+    width: 200px;
+    background-color: #288ad6;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
 }
 .rating-area ul li {
     float: left;
