@@ -75,11 +75,10 @@
                     <div class="category-tab shop-details-tab"><!--category-tab-->
                         <div class="col-sm-12">
                             <ul class="nav nav-tabs">
-                                {{--                                <li class="active"><a href="#details" data-toggle="tab">Details</a></li>--}}
+                                {{-- <li class="active"><a href="#details" data-toggle="tab">Details</a></li>--}}
                                 <li><a href="#reviews" data-toggle="tab">Rating</a></li>
                             </ul>
                         </div>
-
                         <div class="tab-content">
                             {{--                            <div class="tab-pane fade " id="details">--}}
                             {{--                                <div class="product-image-wrapper">--}}
@@ -116,25 +115,16 @@
                                         <a href="#" class="send-rate js_rating_action">Gửi đánh giá của bạn ei</a>
                                     </div>
                                 </div>
-                                <?php
-                                    $listRate = [
-                                        1 => 'Không thích',
-                                        2 => 'Tạm được',
-                                        3 => 'Bình thường',
-                                        4 => 'Rất tốt',
-                                        5 => 'Tuyệt vời',
-                                    ];
-                                ?>
-                                <div class="col-sm-12" style="display: flex;margin-top: 15px; font-size: 15px">
-                                    <p>Chọn đánh giá của bạn</p>
-                                    <span style="margin: 0 15px" class="list_star">
+                                <div class="col-sm-12 formRate hidden">
+                                    <div class="form_rate">
+                                        <p>Chọn đánh giá của bạn</p>
+                                        <span class="list_star">
                                         @for($i = 1; $i<= 5; $i++)
-                                            <i class="fa fa-star"></i>
-                                        @endfor
+                                                <i class="fa fa-star" data-key="{{ $i }}"></i>
+                                            @endfor
                                     </span>
-                                    <span class="list_text">Tốt</span>
-                                </div>
-                                <div class="col-sm-12">
+                                        <span class="list_text">Tốt</span>
+                                    </div>
                                     <ul>
                                         <li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
                                         <li><a href=""><i class="fa fa-clock-o"></i>{{ $date->format('H: m') }}</a></li>
@@ -169,6 +159,42 @@
 @section('js')
     <script src="{{ asset('vendors/sweetAlert2/sweetalert2.js') }}"></script>
     <script src="{{ asset('admins/alert.js') }}"></script>
+    <script>
+        $(function () {
+            let listStar = $(".list_star .fa");
+            listRate = {
+                1 : 'Không thích',
+                2 : 'Tạm được',
+                3 : 'Bình thường',
+                4 : 'Rất tốt',
+                5 : 'Tuyệt vời',
+            };
+            listStar.mouseover(function () {
+                let $this = $(this);
+                let number = $this.attr('data-key');
+                listStar.removeClass('rating_active');
+                $.each(listStar, function (key, value){
+                    if (key + 1 <= number)
+                    {
+                        $(this).addClass('rating_active');
+                    }
+
+                });
+                $(".list_text").text('').text(listRate[$this.attr('data-key')]).show();
+            });
+            $(".js_rating_action").click(function (event){
+                event.preventDefault();
+                if ($(".formRate").hasClass('hidden'))
+                {
+                    $(".formRate").addClass('active').removeClass('hidden');
+                }
+                else
+                {
+                    $(".formRate").addClass('hidden').removeClass('active');
+                }
+            });
+        });
+    </script>
 @endsection
 
 
