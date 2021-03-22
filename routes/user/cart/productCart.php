@@ -10,3 +10,6 @@ Route::get('/product/deleteCart','User\UserProductController@deleteCart')->name(
 // product Detail
 Route::get('/product/productDetail/{id}','User\UserProductController@productDetail')->name('productDetail');
 Route::get('/product/AddToCartProductDetail/{id}','User\UserProductController@AddToCartProductDetail')->name('AddToCartProductDetail');
+// rating
+Route::post('/product/productDetail/rating/{id}','User\UserRatingController@saveRating')->name('productRating');
+
