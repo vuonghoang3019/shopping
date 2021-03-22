@@ -123,7 +123,8 @@
                                                 <i class="fa fa-star" data-key="{{ $i }}"></i>
                                             @endfor
                                     </span>
-                                        <span class="list_text">Tốt</span>
+                                        <span class="list_text"></span>
+                                        <input type="hidden" class="number_rating" value="">
                                     </div>
                                     <ul>
                                         <li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
@@ -132,16 +133,20 @@
                                         </li>
                                     </ul>
                                     <p><b>Write Your Review</b></p>
-                                    <form action="#">
-										<span>
-											<input type="text" placeholder="Your Name"/>
-											<input type="email" placeholder="Email Address"/>
-										</span>
-                                        <textarea name=""></textarea>
-                                        <button type="button" class="btn btn-default pull-right">
-                                            Submit
-                                        </button>
-                                    </form>
+                                    <textarea name="content" id="content"></textarea>
+                                    <a href="{{ route('productRating',['id' => $productDetails->id]) }}"
+                                       class="btn btn-default pull-right js_rating_product">SUBMIT</a>
+{{--                                    <form action="{{ route('productRating',['id' => $productDetails->id]) }}" method="post">--}}
+{{--                                        @csrf--}}
+{{--										<span>--}}
+{{--											<input type="text" placeholder="Your Name" name="name"/>--}}
+{{--											<input type="email" placeholder="Email Address" name="email"/>--}}
+{{--										</span>--}}
+{{--                                        <textarea name="content" id="content"></textarea>--}}
+{{--                                        <button type="button" class="btn btn-default pull-right js_rating_product">--}}
+{{--                                            Submit--}}
+{{--                                        </button>--}}
+{{--                                    </form>--}}
                                 </div>
                             </div>
                         </div>
@@ -160,6 +165,11 @@
     <script src="{{ asset('vendors/sweetAlert2/sweetalert2.js') }}"></script>
     <script src="{{ asset('admins/alert.js') }}"></script>
     <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         $(function () {
             let listStar = $(".list_star .fa");
             listRate = {
@@ -173,6 +183,7 @@
                 let $this = $(this);
                 let number = $this.attr('data-key');
                 listStar.removeClass('rating_active');
+                $(".number_rating").val(number);
                 $.each(listStar, function (key, value){
                     if (key + 1 <= number)
                     {
@@ -191,6 +202,25 @@
                 else
                 {
                     $(".formRate").addClass('hidden').removeClass('active');
+                }
+            });
+            $(".js_rating_product").click(function (event){
+                event.preventDefault();
+                let content = $("#content").val();
+                let number = $(".number_rating").val();
+                let url = $(this).attr('href');
+                if (content && number)
+                {
+                    $.ajax({
+                        url: url,
+                        type: 'POST',
+                        data : {
+                            number : number,
+                            contents: content
+                        }
+                    }).done(function (result){
+                        console.log(result);
+                    });
                 }
             });
         });
