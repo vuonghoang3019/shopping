@@ -4,6 +4,12 @@
     <title>Products</title>
 @endsection
 @section('content')
+    <style>
+        .rating .active
+        {
+            color: #ff9705 !important;
+        }
+    </style>
     <div class="content-wrapper">
         @include('layouts.content-header',['name' => 'Danh sách sản phẩm', 'key' => 'Products'])
         <div class="content">
@@ -43,20 +49,42 @@
                                 <th scope="col">Giá</th>
                                 <th scope="col">Ảnh</th>
                                 <th scope="col">Danh mục</th>
+                                <th scope="col">Trạng thái</th>
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php $stt = 1 ?>
                             @foreach($products as $data)
+                                <?php $average = 0;
+                                if ($data->total_rate)
+                                {
+                                    $average = round($data->total_number / $data->total_rate);
+                                }
+                                ?>
                                 <tr>
                                     <th scope="row">{{ $stt }}</th>
                                     <td>{{ $data->name }}</td>
-                                    <td>{{ number_format($data->price) }} VNĐ</td>
+                                    <td>
+                                        <ul>
+                                            <li>{{ number_format($data->price) }} VNĐ</li>
+                                            <li class="rating">
+                                                @for($i = 1; $i <= 5; $i++)
+                                                    <i class="fa fa-star {{ $i <= $average ? 'active' : '' }}" style="color: #999"></i>
+                                                @endfor
+                                            </li>
+                                        </ul>
+                                    </td>
                                     <td>
                                         <img src="{{ $data->feature_image_path }}" width="100" height="100">
                                     </td>
                                     <td>{{ optional($data->category)->name }}</td>
+                                    <td>
+                                        <a href="{{ route('products.action',['id' => $data->id]) }}"
+                                           class="{{ $data->status == 1 ? 'btn btn-primary' : 'btn btn-default' }}">
+                                            {{ $data->status == 1 ? 'Show' : 'Not Show' }}
+                                        </a>
+                                    </td>
                                     <td>
                                         @can('product-edit',$data->id)
                                             <a href="{{ route('products.edit',['id' => $data->id]) }}"
