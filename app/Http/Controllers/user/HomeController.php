@@ -32,12 +32,13 @@ class HomeController extends Controller
     public function index()
     {
         try {
+            $carts = session()->get('cart');
             $sliders = $this->slider->latest()->take(3)->get();
             $categories = $this->category->newQuery()->where('parent_id', 0)->with(['categoryChild'])->get();
-            $products = $this->product->where('status',1)->latest()->take(6)->get();
+            $products = $this->product->where('status', 1)->latest()->take(6)->get();
             $productRecommend = $this->product->latest('view', 'desc')->take(6)->get();
             $categoryLimit = $this->category->newQuery()->where('parent_id', 0)->with(['categoryChild'])->take(3)->get();
-            return view('user.home.home', compact('sliders', 'categories', 'products', 'productRecommend', 'categoryLimit'));
+            return view('user.home.home', compact('sliders', 'categories', 'products', 'productRecommend', 'categoryLimit', 'carts'));
         } catch (\Exception $exception) {
             abort(500);
         }
@@ -48,7 +49,6 @@ class HomeController extends Controller
 
         $categoryLimit = $this->category->newQuery()->where('parent_id', 0)->with(['categoryChild'])->take(3)->get();
         return view('user.home.login', compact('categoryLimit'));
-
     }
 
     public function register(Request $request)

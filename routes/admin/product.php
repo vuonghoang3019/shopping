@@ -27,4 +27,8 @@ Route::prefix('products')->group(function () {
         'as' => 'products.delete',
         'uses' => 'AdminProductController@delete'
     ]);
+    Route::get('/action/{id}',[
+        'as' => 'products.action',
+        'uses' => 'AdminProductController@action'
+    ]);
 });

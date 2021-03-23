@@ -58,61 +58,23 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapAdminProductRoutes();
-        $this->mapAdminCategoryRoutes();
-        $this->mapAdminMenuRoutes();
-        $this->mapAdminPermissionRoutes();
-        $this->mapAdminRoleRoutes();
-        $this->mapAdminSlider();
-        $this->mapAdminSetting();
-        $this->mapAdminUser();
-        $this->mapUserProductCart();
-        $this->mapCheckout();
-        $this->mapAdminOrder();
     }
     protected function mapAdminProductRoutes()
     {
         Route::middleware('web')->namespace($this->namespace)->group(base_path('routes/admin/product.php'));
-    }
-    protected function mapAdminCategoryRoutes()
-    {
+        Route::middleware('web')->namespace($this->namespace)->group(base_path('routes/admin/rating.php'));
         Route::middleware('web')->namespace($this->namespace)->group(base_path('routes/admin/category.php'));
-    }
-    protected function mapAdminMenuRoutes()
-    {
         Route::middleware('web')->namespace($this->namespace)->group(base_path('routes/admin/menu.php'));
-    }
-    protected function mapAdminPermissionRoutes()
-    {
         Route::middleware('web')->namespace($this->namespace)->group(base_path('routes/admin/permission.php'));
-    }
-    protected function mapAdminRoleRoutes()
-    {
         Route::middleware('web')->namespace($this->namespace)->group(base_path('routes/admin/role.php'));
-    }
-    protected function mapAdminSlider()
-    {
         Route::middleware('web')->namespace($this->namespace)->group(base_path('routes/admin/slider.php'));
-    }
-    protected function mapAdminSetting()
-    {
         Route::middleware('web')->namespace($this->namespace)->group(base_path('routes/admin/setting.php'));
-    }
-    protected function mapAdminUser()
-    {
         Route::middleware('web')->namespace($this->namespace)->group(base_path('routes/admin/user.php'));
-    }
-    protected function mapAdminOrder()
-    {
         Route::middleware('web')->namespace($this->namespace)->group(base_path('routes/admin/order.php'));
-    }
-    protected function mapUserProductCart()
-    {
         Route::middleware('web')->namespace($this->namespace)->group(base_path('routes/user/cart/productCart.php'));
-    }
-    protected function mapCheckout()
-    {
         Route::middleware('web')->namespace($this->namespace)->group(base_path('routes/user/cart/checkout.php'));
     }
+
     /**
      * Configure the rate limiters for the application.
      *

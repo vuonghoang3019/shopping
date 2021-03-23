@@ -28,23 +28,18 @@ class UserProductController extends Controller
         } catch (\Exception $exception) {
             abort(500);
         }
-
     }
 
     public function addToCart($id)
     {
         try {
             $product = $this->product->find($id);
-            if ($product->quantity == 0)
-            {
+            if ($product->quantity == 0) {
                 return response()->json([
                     'code'    => 201,
                     'message' => 'error'
                 ], 201);
-
-            }
-            else
-            {
+            } else {
                 $cart = session()->get('cart');
                 if (isset($cart[$id])) {
                     $cart[$id]['quantity'] = $cart[$id]['quantity'] + 1;
@@ -62,8 +57,6 @@ class UserProductController extends Controller
                     'message' => 'success'
                 ], 200);
             }
-
-
         } catch (\Exception $exception) {
             abort(500);
         }

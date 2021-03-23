@@ -21,7 +21,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="{{ route('categories.index') }}" class="nav-link">
+                    <a href="{{ route('categories.index') }}" class="nav-link {{ \Request::route()->getName() ==  'categories.index' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             {{__('Category')}}
@@ -37,7 +37,7 @@
 {{--                    </a>--}}
 {{--                </li>--}}
                 <li class="nav-item">
-                    <a href="{{ route('products.index') }}" class="nav-link">
+                    <a href="{{ route('products.index') }}" class="nav-link {{ \Request::route()->getName() ==  'products.index' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                            {{__('Product')}}
@@ -45,7 +45,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('sliders.index') }}" class="nav-link">
+                    <a href="{{ route('sliders.index') }}" class="nav-link {{ \Request::route()->getName() ==  'sliders.index' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             {{__('Slider')}}
@@ -53,7 +53,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('settings.index') }}" class="nav-link">
+                    <a href="{{ route('settings.index') }}" class="nav-link {{ \Request::route()->getName() ==  'settings.index' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             {{__('Setting')}}
@@ -61,7 +61,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('users.index') }}" class="nav-link">
+                    <a href="{{ route('users.index') }}" class="nav-link {{ \Request::route()->getName() ==  'users.index' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             {{__('User')}}
@@ -69,7 +69,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('roles.index') }}" class="nav-link">
+                    <a href="{{ route('roles.index') }}" class="nav-link {{ \Request::route()->getName() ==  'roles.index' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             {{__('Role')}}
@@ -77,7 +77,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('permissions.index') }}" class="nav-link">
+                    <a href="{{ route('permissions.index') }}" class="nav-link {{ \Request::route()->getName() ==  'permissions.index' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             {{__('Permission')}}
@@ -85,10 +85,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('order.index') }}" class="nav-link">
+                    <a href="{{ route('order.index') }}" class="nav-link {{ \Request::route()->getName() ==  'order.index' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             {{__('Order')}}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('rating.index') }}" class="nav-link {{ \Request::route()->getName() ==  'rating.index' ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            {{__('Rating')}}
                         </p>
                     </a>
                 </li>

@@ -15,7 +15,7 @@
                     <div class="product-details"><!--product-details-->
                         <div class="col-sm-5">
                             <div class="view-product">
-                                <img src="{{ $productDetails->feature_image_path }}" alt=""/>
+                                <img src="{{ config('app.base_url').$productDetails->feature_image_path }}" alt=""/>
                                 <h3>ZOOM</h3>
                             </div>
                             <div id="similar-product" class="carousel slide" data-ride="carousel">
@@ -75,20 +75,20 @@
                     <div class="category-tab shop-details-tab"><!--category-tab-->
                         <div class="col-sm-12">
                             <ul class="nav nav-tabs">
-                                {{-- <li class="active"><a href="#details" data-toggle="tab">Details</a></li>--}}
+{{--                                <li class="active"><a href="#details" data-toggle="tab">Details</a></li>--}}
                                 <li><a href="#reviews" data-toggle="tab">Rating</a></li>
                             </ul>
                         </div>
                         <div class="tab-content">
-                            {{--                            <div class="tab-pane fade " id="details">--}}
-                            {{--                                <div class="product-image-wrapper">--}}
-                            {{--                                    <div class="single-products">--}}
-                            {{--                                        <div class="productinfo text-center">--}}
-                            {{--                                            <p> {!! $productDetails->content !!} </p>--}}
-                            {{--                                        </div>--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
+{{--                            <div class="tab-pane fade " id="details">--}}
+{{--                                <div class="product-image-wrapper">--}}
+{{--                                    <div class="single-products">--}}
+{{--                                        <div class="productinfo text-center">--}}
+{{--                                            <p> {!! $productDetails->content !!} </p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="tab-pane fade active in" id="reviews">
                                 <div class="component_rating_content">
                                     <div class="rating-item col-md-2">
@@ -136,17 +136,31 @@
                                     <textarea name="content" id="content"></textarea>
                                     <a href="{{ route('productRating',['id' => $productDetails->id]) }}"
                                        class="btn btn-default pull-right js_rating_product">SUBMIT</a>
-{{--                                    <form action="{{ route('productRating',['id' => $productDetails->id]) }}" method="post">--}}
-{{--                                        @csrf--}}
-{{--										<span>--}}
-{{--											<input type="text" placeholder="Your Name" name="name"/>--}}
-{{--											<input type="email" placeholder="Email Address" name="email"/>--}}
-{{--										</span>--}}
-{{--                                        <textarea name="content" id="content"></textarea>--}}
-{{--                                        <button type="button" class="btn btn-default pull-right js_rating_product">--}}
-{{--                                            Submit--}}
-{{--                                        </button>--}}
-{{--                                    </form>--}}
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="component_list_rating">
+                                        <div class="rating_list" style="margin: 10px 0">
+                                            <div class="text-success">
+                                                <span style="font-weight: bold; text-transform: capitalize">Hoàng kế Vương</span>
+                                                <label class="">
+                                                    <i class="fa fa-check-circle"></i>
+                                                    Đã mua hàng tại Website
+                                                </label>
+                                            </div>
+                                            <p>
+                                                <span>
+                                                    @for($i = 1; $i <= 5; $i++)
+                                                        <i class="fa fa-star"></i>
+                                                    @endfor
+                                                </span>
+                                                Quá thất vọng. Mới mua được 10 ngày thì màn hình bị lỗi. Không lên hình chỉ có tiếng. Cứ tưởng đem ra sẽ được đổi máy mới, ai ngờ đem ra phải đợi gửi hãng thẩm định lỗi thêm 10 ngày nửa.
+                                                Lở dại lần này. Mấy lần sau sẽ suy nghĩ bỏ thêm ít mua ipad chắc sẽ an tâm hơn.
+                                            </p>
+                                            <div>
+                                                <span><i class="fa fa-clock-o"></i>  3 tuần trước</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -173,53 +187,51 @@
         $(function () {
             let listStar = $(".list_star .fa");
             listRate = {
-                1 : 'Không thích',
-                2 : 'Tạm được',
-                3 : 'Bình thường',
-                4 : 'Rất tốt',
-                5 : 'Tuyệt vời',
+                1: 'Không thích',
+                2: 'Tạm được',
+                3: 'Bình thường',
+                4: 'Rất tốt',
+                5: 'Tuyệt vời',
             };
             listStar.mouseover(function () {
                 let $this = $(this);
                 let number = $this.attr('data-key');
                 listStar.removeClass('rating_active');
                 $(".number_rating").val(number);
-                $.each(listStar, function (key, value){
-                    if (key + 1 <= number)
-                    {
+                $.each(listStar, function (key, value) {
+                    if (key + 1 <= number) {
                         $(this).addClass('rating_active');
                     }
 
                 });
                 $(".list_text").text('').text(listRate[$this.attr('data-key')]).show();
             });
-            $(".js_rating_action").click(function (event){
+            $(".js_rating_action").click(function (event) {
                 event.preventDefault();
-                if ($(".formRate").hasClass('hidden'))
-                {
+                if ($(".formRate").hasClass('hidden')) {
                     $(".formRate").addClass('active').removeClass('hidden');
-                }
-                else
-                {
+                } else {
                     $(".formRate").addClass('hidden').removeClass('active');
                 }
             });
-            $(".js_rating_product").click(function (event){
+            $(".js_rating_product").click(function (event) {
                 event.preventDefault();
                 let content = $("#content").val();
                 let number = $(".number_rating").val();
                 let url = $(this).attr('href');
-                if (content && number)
-                {
+                if (content && number) {
                     $.ajax({
                         url: url,
                         type: 'POST',
-                        data : {
-                            number : number,
+                        data: {
+                            number: number,
                             contents: content
                         }
-                    }).done(function (result){
-                        console.log(result);
+                    }).done(function (result) {
+                        if (result.code == 200) {
+                            alert("GUI DANH GIA THANH CONG");
+                            location.reload();
+                        }
                     });
                 }
             });
