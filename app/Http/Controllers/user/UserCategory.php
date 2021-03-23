@@ -24,8 +24,8 @@ class UserCategory extends Controller
             $categoryLimit = $this->category->newQuery()->where('parent_id', 0)->with(['categoryChild'])->take(3)->get();
             $products = $this->product->newQuery()->where('category_id', $categoryID)->paginate(9);
             $categories = $this->category->newQuery()->where('parent_id', 0)->with(['categoryChild'])->get();
-            $cart = session()->get('cart');
-            return view('user.product.category.index', compact('categoryLimit', 'products', 'categories','cart'));
+            $carts = session()->get('cart');
+            return view('user.product.category.index', compact('categoryLimit', 'products', 'categories','carts'));
         } catch (\Exception $exception) {
             abort(500);
         }
