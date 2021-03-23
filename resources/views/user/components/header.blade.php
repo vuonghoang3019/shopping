@@ -65,14 +65,14 @@
                                 <li><a href=""><i class="fa fa-user"></i> {{ auth()->user()->name}}</a></li>
                                 <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="{{ route('showCart') }}"><span class="cartCount" >
-                                               {{ count($carts) }}
+                                               {{ count($cart) }}
                                         </span><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                 <li><a href="{{ route('logout') }}"><i class="fa fa-lock"></i> Logout</a></li>
                             @else
                                 <li><a href="#"><i class="fa fa-user"></i> User </a></li>
                                 <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="{{ route('showCart') }}"><span class="cartCount" >
-                                             {{ count($carts) }}
+                                             {{ count($cart) }}
                                         </span><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                 <li><a href="{{ route('loginUser') }}"><i class="fa fa-lock"></i> Login</a></li>
                             @endif

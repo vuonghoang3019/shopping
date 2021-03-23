@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Models\Rating;
 use Illuminate\Http\Request;
 
 class UserProductController extends Controller
@@ -13,12 +14,14 @@ class UserProductController extends Controller
     private $product;
     private $category;
     private $productImage;
+    private $rating;
 
-    public function __construct(Product $product, Category $category, ProductImage $productImage)
+    public function __construct(Product $product, Category $category, ProductImage $productImage, Rating $rating)
     {
         $this->category = $category;
         $this->product = $product;
         $this->productImage = $productImage;
+        $this->rating = $rating;
     }
 
     public function index()
@@ -164,8 +167,9 @@ class UserProductController extends Controller
             $productDetails = $this->product->find($id);
             $productImage = $this->product->newQuery()->where('id', $id)->with(['productImage'])->get();
             $carts = session()->get('cart');
+            $ratings = $this->rating->newQuery()->with(['product','user'])->where('product_id',$id)->orderBy('id','DESC')->get();
             return view('user.product.productDetail', compact('productDetails', 'productImage',
-                'categoryLimit', 'categories', 'productRecommend', 'carts'));
+                'categoryLimit', 'categories', 'productRecommend', 'carts','ratings'));
         } catch (\Exception $exception) {
             abort(500);
         }
