@@ -34,5 +34,6 @@
                 </div>
             @endforeach
         </div><!--/category-products-->
+        @include('user.home.components.filterProduct')
     </div>
 </div>
