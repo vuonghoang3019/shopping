@@ -6,6 +6,12 @@
     <link href="{{ asset('asset/css/responsive.css') }}" rel="stylesheet">
 @endsection
 @section('content')
+    <style>
+        .rating .active
+        {
+            color: #ff9705 !important;
+        }
+    </style>
     <?php $now = \Carbon\Carbon::now()->month; $date = \Carbon\Carbon::now() ?>
     <section>
         <div class="container">
@@ -139,9 +145,13 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="component_list_rating">
-                                        <div class="rating_list" style="margin: 10px 0">
+                                        @foreach($ratings as $rating)
+
+                                        <div class="rating" style="margin: 10px 0">
                                             <div class="text-success">
-                                                <span style="font-weight: bold; text-transform: capitalize">Hoàng kế Vương</span>
+                                                <span style="font-weight: bold; text-transform: capitalize">
+                                                    {{$rating->user->name}}
+                                                </span>
                                                 <label class="">
                                                     <i class="fa fa-check-circle"></i>
                                                     Đã mua hàng tại Website
@@ -150,16 +160,17 @@
                                             <p>
                                                 <span>
                                                     @for($i = 1; $i <= 5; $i++)
-                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star {{ $i <= $rating->number ? 'active' : '' }}" style="color: #999"></i>
                                                     @endfor
                                                 </span>
-                                                Quá thất vọng. Mới mua được 10 ngày thì màn hình bị lỗi. Không lên hình chỉ có tiếng. Cứ tưởng đem ra sẽ được đổi máy mới, ai ngờ đem ra phải đợi gửi hãng thẩm định lỗi thêm 10 ngày nửa.
-                                                Lở dại lần này. Mấy lần sau sẽ suy nghĩ bỏ thêm ít mua ipad chắc sẽ an tâm hơn.
+                                                {{ $rating->content }}
                                             </p>
                                             <div>
-                                                <span><i class="fa fa-clock-o"></i>  3 tuần trước</span>
+                                                <span><i class="fa fa-clock-o"></i>  {{ $rating->created_at }}</span>
                                             </div>
                                         </div>
+
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
