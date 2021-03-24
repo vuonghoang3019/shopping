@@ -45,6 +45,22 @@ class UserCategory extends Controller
                         break;
                 }
             }
+            if ($request->orderBy)
+            {
+                $orderBy = $request->orderBy;
+                switch ($orderBy)
+                {
+                    case "desc" :
+                        $products->orderBy('id','DESC');
+                        break;
+                    case "price_max" :
+                        $products->orderBy('price','ASC');
+                        break;
+                    case "price_min" :
+                        $products->orderBy('price','DESC');
+                        break;
+                }
+            }
             $products = $products->orderBy('id','DESC')->paginate(9);
             $categories = $this->category->newQuery()->where('parent_id', 0)->with(['categoryChild'])->get();
             $carts = session()->get('cart');

@@ -37,6 +37,15 @@
         </div>
     </section>
 @endsection
+@section('js')
+    <script>
+        $(function (){
+            $('.orderBy').change(function (){
+                $('#form_order').submit();
+            });
+        });
+    </script>
+@endsection
 
 
 
