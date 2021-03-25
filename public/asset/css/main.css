@@ -647,6 +647,10 @@ ul.sub-menu {
 }
 
 .left-sidebar h2,
+.brands-name .active
+{
+    color: #c2a476;
+}
 .brands_products h2 {
     color: #FE980F;
     font-family: 'Roboto', sans-serif;
