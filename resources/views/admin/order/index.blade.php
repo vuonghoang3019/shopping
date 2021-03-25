@@ -17,6 +17,7 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Total</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">Date</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -30,6 +31,9 @@
                                     <td>{{ number_format($order->total) }} VNĐ</td>
                                     <td>
                                         {{ $order->customer->email }}
+                                    </td>
+                                    <td>
+                                        {{ $order->created_at->format('d-m-Y') }}
                                     </td>
                                     <td>
                                         @can('order-actionOrder')
