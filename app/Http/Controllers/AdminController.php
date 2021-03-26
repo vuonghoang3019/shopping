@@ -20,8 +20,18 @@ class AdminController extends Controller
         if (auth()->check()) {
             $moneyDay = $this->order->whereDay('updated_at',date('d'))->where('status',1)->sum('total');
             $moneyMonth = $this->order->whereMonth('updated_at',date('m'))->where('status',1)->sum('total');
-
-            return view('dashboard',compact('moneyDay','moneyMonth'));
+            $dataMoney = [
+                [
+                    "name" => "Doanh thu ngày",
+                    "y" => (int)$moneyDay
+                ],
+                [
+                    "name" => "Doanh thu Thang",
+                    "y" => (int)$moneyMonth
+                ],
+            ];
+            $dataMoney = json_encode($dataMoney);
+            return view('dashboard',compact('dataMoney'));
         } else {
             return view('login');
         }

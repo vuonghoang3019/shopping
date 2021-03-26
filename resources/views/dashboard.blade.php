@@ -145,16 +145,15 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script>
         // Create the chart
+        let data = "{{ $dataMoney }}";
+        let dataChart = JSON.parse(data.replace(/&quot;/g,'"'));
         Highcharts.chart('container', {
             chart: {
                 type: 'column'
             },
             title: {
-                text: 'List user buy everything 2021'
+                text: 'Doanh số bán hàng'
             },
-            // subtitle: {
-            //     text: 'Click the columns to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
-            // },
             accessibility: {
                 announceNewData: {
                     enabled: true
@@ -165,7 +164,7 @@
             },
             yAxis: {
                 title: {
-                    text: 'Total percent market share'
+                    text: 'Doanh thu cửa hàng'
                 }
 
             },
@@ -184,25 +183,13 @@
 
             tooltip: {
                 headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y}%</b> VNĐ <br/>'
             },
-
             series: [
                 {
                     name: "Browsers",
                     colorByPoint: true,
-                    data: [
-                        {
-                            name: "Doanh thu ngày",
-                            y: {{ $moneyDay }},
-                            drilldown: "Doanh thu ngày"
-                        },
-                        {
-                            name: "Doanh thu tháng",
-                            y: {{ $moneyMonth }},
-                            drilldown: "Doanh thu tháng"
-                        }
-                    ]
+                    data: dataChart
                 }
             ],
         });
