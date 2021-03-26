@@ -48,7 +48,8 @@ class HomeController extends Controller
     {
 
         $categoryLimit = $this->category->newQuery()->where('parent_id', 0)->with(['categoryChild'])->take(3)->get();
-        return view('user.home.login', compact('categoryLimit'));
+        $carts = session()->get('cart');
+        return view('user.home.login', compact('categoryLimit','carts'));
     }
 
     public function register(Request $request)

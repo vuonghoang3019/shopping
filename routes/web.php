@@ -23,11 +23,6 @@ Route::get('/category/{slug}/{id}', [
 
 
 Route::prefix('admin')->group(function () {
-
-//    Route::get('/admin', 'AdminController@loginAdmin');
-//    Route::post('/admin', 'AdminController@postloginAdmin');
-//    Route::get('/logout', 'AdminController@logout')->name('logout');
-//    Route::get('/admin/dashboard','AdminController@index');
         Route::get('/', [
             'as'   => 'admin.login',
             'uses' => 'AdminController@loginAdmin'

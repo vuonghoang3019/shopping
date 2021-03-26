@@ -2,16 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
+    private $order;
+    public function __construct(Order $order)
+    {
+        $this->order = $order;
+    }
     public function index()
     {
         if (auth()->check()) {
-            return view('dashboard');
+            $moneyDay = $this->order->whereDay('updated_at',date('d'))->where('status',1)->sum('total');
+            $moneyMonth = $this->order->whereMonth('updated_at',date('m'))->where('status',1)->sum('total');
+
+            return view('dashboard',compact('moneyDay','moneyMonth'));
         } else {
             return view('login');
         }
