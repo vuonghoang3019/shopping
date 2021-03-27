@@ -14,6 +14,7 @@
     </style>
     <?php $now = \Carbon\Carbon::now()->month; $date = \Carbon\Carbon::now() ?>
     <section>
+{{--        {{ dd($arrayRatings) }}--}}
         <div class="container">
             <div class="row">
                 @include('user.components.sidebar')
@@ -95,27 +96,37 @@
 {{--                                    </div>--}}
 {{--                                </div>--}}
 {{--                            </div>--}}
+                            <?php
+                                $ageDetail = 0;
+                                if ($productDetails->total_rate)
+                                    {
+                                        $ageDetail = round($productDetails->total_number / $productDetails->total_rate);
+                                    }
+                            ?>
                             <div class="tab-pane fade active in" id="reviews">
                                 <div class="component_rating_content">
                                     <div class="rating-item col-md-2">
                                         <span class="fa fa-star rating_item">
-                                            <b>2.5</b>
+                                            <b>{{ $ageDetail }}</b>
                                         </span>
                                     </div>
                                     <div class="list_rating col-md-6">
-                                        @for($i = 1; $i <= 5; $i++)
-                                            <div class="item_rating">
-                                                <div class="item_rating_star">
-                                                    {{ $i }} <span class="fa fa-star"></span>
+                                            @foreach($arrayRatings as $key => $arrayRating)
+                                            <?php
+                                                $itemAge = round(($arrayRating['total'] / $productDetails->total_rate) * 100) ;
+                                            ?>
+                                                <div class="item_rating">
+                                                    <div class="item_rating_star">
+                                                        {{ $key }} <span class="fa fa-star"></span>
+                                                    </div>
+                                                    <div class="item_rating_line">
+                                                        <span><b style="width: {{ $itemAge }}%"></b></span>
+                                                    </div>
+                                                    <div class="item_rating_number">
+                                                        <a href="">{{ $arrayRating['total'] }} đánh giá </a>
+                                                    </div>
                                                 </div>
-                                                <div class="item_rating_line">
-                                                    <span><b></b></span>
-                                                </div>
-                                                <div class="item_rating_number">
-                                                    <a href="">209 rate</a>
-                                                </div>
-                                            </div>
-                                        @endfor
+                                            @endforeach
                                     </div>
                                     <div class="col-md-4 ">
                                         <a href="#" class="send-rate js_rating_action">Gửi đánh giá của bạn ei</a>

@@ -178,21 +178,28 @@ class UserProductController extends Controller
                 ->where('product_id',$id)
                 ->select(DB::raw('count(number) as total'))
                 ->addSelect('number')
-                ->get();
-            for ($i = 1; $i <= 5; $i++)
+                ->get()->toArray();
+            $arrayRatings = [];
+            if (!empty($ratingDashboard))
             {
-                $arrayRating[$i] = [];
-                foreach ($ratingDashboard as $rating)
+                for ($i = 1; $i <= 5; $i++)
                 {
-                    if ($rating['number'] == $i)
+                    $arrayRatings[$i] = [
+                        'total' => 0,
+                        'number' => 0
+                    ];
+                    foreach ($ratingDashboard as $rating)
                     {
-                        $arrayRating[$i] = $rating;
+                        if ($rating['number'] == $i)
+                        {
+                            $arrayRatings[$i] = $rating;
+                            continue;
+                        }
                     }
                 }
             }
-
             return view('user.product.productDetail', compact('productDetails', 'productImage',
-                'categoryLimit', 'categories', 'productRecommend', 'carts','ratings','arrayRating'));
+                'categoryLimit', 'categories', 'productRecommend', 'carts','ratings','arrayRatings'));
         } catch (\Exception $exception) {
             abort(500);
         }
