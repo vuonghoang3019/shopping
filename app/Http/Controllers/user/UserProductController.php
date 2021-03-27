@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\Rating;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserProductController extends Controller
 {
@@ -167,9 +168,31 @@ class UserProductController extends Controller
             $productDetails = $this->product->find($id);
             $productImage = $this->product->newQuery()->where('id', $id)->with(['productImage'])->get();
             $carts = session()->get('cart');
-            $ratings = $this->rating->newQuery()->with(['product','user'])->where('product_id',$id)->orderBy('id','DESC')->get();
+            $ratings = $this->rating->newQuery()
+                ->with(['product','user'])
+                ->where('product_id',$id)
+                ->orderBy('id','DESC')
+                ->get();
+            $ratingDashboard = $this->rating->newQuery()
+                ->groupBy('number')
+                ->where('product_id',$id)
+                ->select(DB::raw('count(number) as total'))
+                ->addSelect('number')
+                ->get();
+            for ($i = 1; $i <= 5; $i++)
+            {
+                $arrayRating[$i] = [];
+                foreach ($ratingDashboard as $rating)
+                {
+                    if ($rating['number'] == $i)
+                    {
+                        $arrayRating[$i] = $rating;
+                    }
+                }
+            }
+
             return view('user.product.productDetail', compact('productDetails', 'productImage',
-                'categoryLimit', 'categories', 'productRecommend', 'carts','ratings'));
+                'categoryLimit', 'categories', 'productRecommend', 'carts','ratings','arrayRating'));
         } catch (\Exception $exception) {
             abort(500);
         }
