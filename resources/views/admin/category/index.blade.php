@@ -10,9 +10,9 @@
             <div class="container-fluid">
                 <div class="row">
                     @can('category-add')
-                    <div class="col-md-12">
-                        <a href="{{ route('categories.create') }}" class="btn btn-success">ADD</a>
-                    </div>
+                        <div class="col-md-12">
+                            <a href="{{ route('categories.create') }}" class="btn btn-success">ADD</a>
+                        </div>
                     @endcan
                     <div class="col-md-12">
                         <table class="table">
@@ -20,29 +20,38 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Tên danh mục</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                           <?php $stt=0 ?>
-                                @foreach($categories as $data)
+                            <?php $stt = 0 ?>
+                            @foreach($categories as $data)
                                 <tr>
                                     <th scope="row">{{ $stt }}</th>
                                     <td>{{ $data->name }}</td>
                                     <td>
+                                        <a href="{{ route('categories.action',['id' => $data->id]) }}"
+                                           class="{{ $data->home == 1 ? "btn btn-primary" : 'btn btn-default'}}"
+                                        >
+                                            {{ $data->home == 1 ? 'Show' : 'Not Show' }}
+                                        </a>
+                                    </td>
+                                    <td>
                                         @can('category-edit')
-                                        <a href="{{ route('categories.edit',['id' => $data->id]) }}" class="btn btn-default">Edit</a>
+                                            <a href="{{ route('categories.edit',['id' => $data->id]) }}"
+                                               class="btn btn-default">Edit</a>
                                         @endcan
                                         @can('category-delete')
-                                        <a href=""
-                                           data-url="{{ route('categories.delete',['id' => $data->id]) }}"
-                                           class="btn btn-danger action-delete">Delete
-                                        </a>
-                                            @endcan
+                                            <a href=""
+                                               data-url="{{ route('categories.delete',['id' => $data->id]) }}"
+                                               class="btn btn-danger action-delete">Delete
+                                            </a>
+                                        @endcan
                                     </td>
                                 </tr>
-                                    <?php $stt++; ?>
-                                @endforeach
+                                <?php $stt++; ?>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

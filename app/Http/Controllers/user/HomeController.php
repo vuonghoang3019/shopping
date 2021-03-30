@@ -34,7 +34,7 @@ class HomeController extends Controller
         try {
             $carts = session()->get('cart');
             $sliders = $this->slider->latest()->take(3)->get();
-            $categories = $this->category->newQuery()->where('parent_id', 0)->with(['categoryChild'])->get();
+            $categories = $this->category->newQuery()->where('parent_id', 0)->where('home',1)->with(['categoryChild'])->get();
             $products = $this->product->where('status', 1)->latest()->take(6)->get();
             $productRecommend = $this->product->latest('view', 'desc')->take(6)->get();
             $categoryLimit = $this->category->newQuery()->where('parent_id', 0)->with(['categoryChild'])->take(3)->get();

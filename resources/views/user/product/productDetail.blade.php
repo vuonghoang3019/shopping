@@ -82,20 +82,20 @@
                     <div class="category-tab shop-details-tab"><!--category-tab-->
                         <div class="col-sm-12">
                             <ul class="nav nav-tabs">
-{{--                                <li class="active"><a href="#details" data-toggle="tab">Details</a></li>--}}
+                                <li class="active"><a href="#details" data-toggle="tab">Details</a></li>
                                 <li><a href="#reviews" data-toggle="tab">Rating</a></li>
                             </ul>
                         </div>
                         <div class="tab-content">
-{{--                            <div class="tab-pane fade " id="details">--}}
-{{--                                <div class="product-image-wrapper">--}}
-{{--                                    <div class="single-products">--}}
-{{--                                        <div class="productinfo text-center">--}}
-{{--                                            <p> {!! $productDetails->content !!} </p>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
+                            <div class="tab-pane fade active in" id="details">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <p> {!! $productDetails->content !!} </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <?php
                                 $ageDetail = 0;
                                 if ($productDetails->total_rate)
@@ -103,7 +103,7 @@
                                         $ageDetail = round($productDetails->total_number / $productDetails->total_rate);
                                     }
                             ?>
-                            <div class="tab-pane fade active in" id="reviews">
+                            <div class="tab-pane fade " id="reviews">
                                 <div class="component_rating_content">
                                     <div class="rating-item col-md-2">
                                         <span class="fa fa-star rating_item">

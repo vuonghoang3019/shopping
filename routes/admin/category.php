@@ -33,5 +33,9 @@ Route::prefix('categories')->group(function () {
         'uses'       => 'CategoryController@delete',
         'middleware' => 'can:category-delete'
     ]);
+    Route::get('/action/{id}', [
+        'as'         => 'categories.action',
+        'uses'       => 'CategoryController@action',
+    ]);
 
 });
