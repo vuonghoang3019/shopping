@@ -14,12 +14,12 @@
     </style>
     <?php $now = \Carbon\Carbon::now()->month; $date = \Carbon\Carbon::now() ?>
     <section>
-{{--        {{ dd($arrayRatings) }}--}}
         <div class="container">
             <div class="row">
                 @include('user.components.sidebar')
                 <div class="col-sm-9 padding-right">
-                    <div class="product-details"><!--product-details-->
+                    <!--product-details-->
+                    <div class="product-details" data-id = {{ $productDetails->id }}>
                         <div class="col-sm-5">
                             <div class="view-product">
                                 <img src="{{ config('app.base_url').$productDetails->feature_image_path }}" alt=""/>
@@ -53,7 +53,7 @@
                             </div>
                         </div>
                         <div class="col-sm-7">
-                            <div class="product-information"><!--/product-information-->
+                            <div class="product-information">
                                 <h2>{{ $productDetails->name }}</h2>
                                 <span>
 									<span>{{ number_format($productDetails->price) }} VNĐ</span>
@@ -188,7 +188,6 @@
                         </div>
 
                     </div>
-
                     @include('user.home.components.recommendProduct')
 
                 </div>
@@ -257,6 +256,30 @@
                     });
                 }
             });
+
+            // lưu id sản phẩm vào localstorage
+            let productID = $('.product-details').attr('data-id');
+
+            // lấy giá trị getItem đặt key là products
+            let products = localStorage.getItem('products');
+
+            if (products == null) // kiem tra xem products da duoc khoi tao hay chua
+            {
+                let arrayProduct = []; // nen chua khoi tao thi khoi tao 1 mang
+                arrayProduct.push(productID); // push ID vào mảng (vào localstorage)
+                localStorage.setItem('products',JSON.stringify(arrayProduct)); // gán biến products vào local, khởi tạo
+            }
+            else
+            {
+                // let products = localStorage.getItem('products');// lấy giá trị đã lưu tại local
+                products = $.parseJSON(products); // chuyển lại string về mảng
+                if (products.indexOf(productID) == -1) // sử dụng indexOf để tránh dulicate ID
+                {
+                    products.push(productID);
+                    localStorage.setItem('product',JSON.stringify(products));
+                }
+                console.log(products);
+            }
         });
     </script>
 @endsection
