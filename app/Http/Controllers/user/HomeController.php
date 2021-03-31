@@ -88,5 +88,11 @@ class HomeController extends Controller
         auth()->logout();
         return redirect()->route('loginUser');
     }
+    public function productHaveSeen(Request $request)
+    {
+        return response()->json([
+            'data' => $request->id
+        ]);
+    }
 
 }

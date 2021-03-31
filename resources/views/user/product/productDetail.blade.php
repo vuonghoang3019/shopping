@@ -261,10 +261,9 @@
             let productID = $('.product-details').attr('data-id');
 
             let products = localStorage.getItem('products');
-            // window.localStorage.clear();
             if (products == null)
             {
-                let arrayProduct = [];
+                let arrayProduct = new Array();
                 arrayProduct.push(productID);
                 localStorage.setItem('products',JSON.stringify(arrayProduct));
             }
@@ -274,7 +273,7 @@
                 if (products.includes(productID));
                 {
                     products.push(productID);
-                    localStorage.setItem('product',JSON.stringify(products));
+                    localStorage.setItem('products',JSON.stringify(products));
                 }
             }
         });

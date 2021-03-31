@@ -15,6 +15,7 @@ Route::get('/', 'User\HomeController@index')->name('home');
 Route::get('/loginUser', 'User\HomeController@loginUser')->name('loginUser');
 Route::post('/register', 'User\HomeController@register')->name('register');
 Route::post('/postLogin', 'User\HomeController@postLogin')->name('postLogin');
+Route::post('/productHaveSeen', 'User\HomeController@productHaveSeen')->name('productHaveSeen');
 Route::get('/logout', 'User\HomeController@logout')->name('logout');
 Route::get('/category/{slug}/{id}', [
     'as'   => 'category.product',
