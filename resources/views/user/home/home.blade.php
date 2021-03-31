@@ -17,21 +17,28 @@
                     <!--feature Product-->
                 @include('user.home.components.productHaveSeen')
                 @include('user.home.components.featureProduct')
+
                 <!--End feature Product-->
 
                     <!--category-tab-->
                 @include('user.home.components.categoryTab')
+
+
                 <!--End category-tab-->
 
                     <!--recommended_items-->
                 @include('user.home.components.recommendProduct')
+
                 <!--End recommended_items-->
+                <div id="productHaveSeen">
 
                 </div>
+                </div>
+
             </div>
         </div>
     </section>
 @endsection
 @section('js')
-@endsection
 
+@endsection

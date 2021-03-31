@@ -34,7 +34,7 @@ class HomeController extends Controller
         try {
             $carts = session()->get('cart');
             $sliders = $this->slider->latest()->take(3)->get();
-            $categories = $this->category->newQuery()->where('parent_id', 0)->where('home',1
+            $categories = $this->category->newQuery()->where('parent_id', 0)->where('home', 1
 
 
             )->with(['categoryChild'])->get();
@@ -52,7 +52,7 @@ class HomeController extends Controller
 
         $categoryLimit = $this->category->newQuery()->where('parent_id', 0)->with(['categoryChild'])->take(3)->get();
         $carts = session()->get('cart');
-        return view('user.home.login', compact('categoryLimit','carts'));
+        return view('user.home.login', compact('categoryLimit', 'carts'));
     }
 
     public function register(Request $request)
@@ -88,11 +88,19 @@ class HomeController extends Controller
         auth()->logout();
         return redirect()->route('loginUser');
     }
+
     public function productHaveSeen(Request $request)
     {
-        return response()->json([
-            'data' => $request->id
-        ]);
+        if ($request->ajax()) {
+            $listID = $request->id;
+            $products = $this->product->whereIn('id',$listID)->get();
+            $html = view('user.home.components.productHaveSeen',compact('products'))->render();
+            return response()->json([
+                'data' => $html
+            ]);
+
+        }
+
     }
 
 }
