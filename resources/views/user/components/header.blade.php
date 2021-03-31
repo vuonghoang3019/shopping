@@ -72,7 +72,7 @@
                                 <li><a href="#"><i class="fa fa-user"></i> User </a></li>
                                 <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="{{ route('showCart') }}"><span class="cartCount" >
-                                             {{ count($carts) }}
+                                               {{ isset($carts) ?  count($carts) : '0' }}
                                         </span><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                 <li><a href="{{ route('loginUser') }}"><i class="fa fa-lock"></i> Login</a></li>
                             @endif

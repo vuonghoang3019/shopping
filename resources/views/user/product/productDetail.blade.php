@@ -257,28 +257,25 @@
                 }
             });
 
-            // lưu id sản phẩm vào localstorage
+
             let productID = $('.product-details').attr('data-id');
 
-            // lấy giá trị getItem đặt key là products
             let products = localStorage.getItem('products');
-
-            if (products == null) // kiem tra xem products da duoc khoi tao hay chua
+            // window.localStorage.clear();
+            if (products == null)
             {
-                let arrayProduct = []; // nen chua khoi tao thi khoi tao 1 mang
-                arrayProduct.push(productID); // push ID vào mảng (vào localstorage)
-                localStorage.setItem('products',JSON.stringify(arrayProduct)); // gán biến products vào local, khởi tạo
+                let arrayProduct = [];
+                arrayProduct.push(productID);
+                localStorage.setItem('products',JSON.stringify(arrayProduct));
             }
             else
             {
-                // let products = localStorage.getItem('products');// lấy giá trị đã lưu tại local
-                products = $.parseJSON(products); // chuyển lại string về mảng
-                if (products.indexOf(productID) == -1) // sử dụng indexOf để tránh dulicate ID
+                products = $.parseJSON(products);
+                if (products.includes(productID));
                 {
                     products.push(productID);
                     localStorage.setItem('product',JSON.stringify(products));
                 }
-                console.log(products);
             }
         });
     </script>

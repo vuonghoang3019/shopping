@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8fa93743-6951-465e-9dcf-5b97e74ff6f5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/user/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/user/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/components/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/components/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/user/product/productDetail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/product/productDetail.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -153,6 +153,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.composer" />
+    <property name="ts.external.directory.path" value="E:\php\PhpStorm 2020.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -177,7 +178,7 @@
       <workItem from="1616861768351" duration="3503000" />
       <workItem from="1617005516757" duration="1480000" />
       <workItem from="1617071326606" duration="5437000" />
-      <workItem from="1617157041536" duration="4144000" />
+      <workItem from="1617157041536" duration="6880000" />
     </task>
     <servers />
   </component>
@@ -193,10 +194,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1616573576062" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1616516930266">
+    <state x="425" y="187" key="run.anything.popup" timestamp="1617162668537">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1616516930266" />
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1617162668537" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1617073280358">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
