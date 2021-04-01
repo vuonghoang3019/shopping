@@ -45,9 +45,10 @@
         });
         $(function () {
             let renderProduct = '{{ route('productHaveSeen') }}';
+            let checkRenderProduct = false;
             $(document).on('scroll', function () {
-                if ($(window).scrollTop() > 400) {
-                    console.log('scroll');
+                if ($(window).scrollTop() > 400 && checkRenderProduct == false) {
+                    checkRenderProduct = true;
                     let products = localStorage.getItem('products');
                     products = $.parseJSON(products);
                     if (products.length > 0) {
