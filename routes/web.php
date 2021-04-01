@@ -1,5 +1,7 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,24 +24,23 @@ Route::get('/category/{slug}/{id}', [
     'uses' => 'User\UserCategory@index'
 ]);
 
-
 Route::prefix('admin')->group(function () {
-        Route::get('/', [
-            'as'   => 'admin.login',
-            'uses' => 'AdminController@loginAdmin'
-        ]);
-        Route::post('/', [
-            'as'   => 'admin.post-login',
-            'uses' => 'AdminController@postloginAdmin'
-        ]);
-        Route::get('/logout', [
-            'as'   => 'logout',
-            'uses' => 'AdminController@logout'
-        ]);
-        Route::get('/dashboard', [
-            'as'   => 'index',
-            'uses' => 'AdminController@index'
-        ]);
+    Route::get('/', [
+        'as'   => 'admin.login',
+        'uses' => 'AdminController@loginAdmin'
+    ]);
+    Route::post('/', [
+        'as'   => 'admin.post-login',
+        'uses' => 'AdminController@postloginAdmin'
+    ]);
+    Route::get('/logout', [
+        'as'   => 'logout',
+        'uses' => 'AdminController@logout'
+    ]);
+    Route::get('/dashboard', [
+        'as'   => 'index',
+        'uses' => 'AdminController@index'
+    ]);
 
     // PHAN NANG CAO CUC MANH
     //test permission
@@ -95,6 +96,11 @@ Route::prefix('admin')->group(function () {
     });
 });
 
+//test auth login
+Route::prefix('authenticate')->middleware('CheckLoginAdmin')->group( function () {
+    Route::get('/login', 'AdminControllerTest@getLogin')->name('admin.login');
+    Route::post('/login', 'AdminControllerTest@postLogin');
+});
 
 
 
