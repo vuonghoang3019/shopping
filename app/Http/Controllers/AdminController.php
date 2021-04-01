@@ -47,7 +47,6 @@ class AdminController extends Controller
         } catch (\Exception $exception) {
             abort(500);
         }
-
     }
 
     public function postloginAdmin(Request $request)
