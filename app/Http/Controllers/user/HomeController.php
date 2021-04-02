@@ -5,6 +5,7 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Product;
 use App\Models\Setting;
 use App\Models\Slider;
@@ -22,8 +23,9 @@ class HomeController extends Controller
     private $setting;
     private $user;
     private $order;
+    private $order_items;
     public function __construct(Slider $slider, Category $category, Product $product,
-                                Setting $setting, User $user, Order $order)
+                                Setting $setting, User $user, Order $order, OrderItem $order_items)
     {
         $this->slider = $slider;
         $this->category = $category;
@@ -31,6 +33,7 @@ class HomeController extends Controller
         $this->setting = $setting;
         $this->user = $user;
         $this->order = $order;
+        $this->order_items = $order_items;
     }
 
     public function index()
@@ -46,15 +49,29 @@ class HomeController extends Controller
             $productRecommend = $this->product->latest('view', 'desc')->take(6)->get();
             $categoryLimit = $this->category->newQuery()->where('parent_id', 0)->with(['categoryChild'])->take(3)->get();
             //check user login, chua dang nhap thi thoi
+            //C2: Luc mua hang thanh cong, luu vao 1 list nhung danh muc san pham da mua vao bang don hang.
             if (Auth::check())
             {
                 $orders = $this->order->where([
+                    'user_id' => \auth()->user()->id,
                     'status' => 1
-                ])->get();
-                dump($orders);
+                ])->pluck('id');
+                if (!empty($orders))
+                {
+                    $listID = $this->order_items->whereIn('order_id',$orders)->distinct()->pluck('product_id');
+                    if (!empty($listID))
+                    {
+                        $listIDProduct = $this->product->whereIn('id',$listID)->distinct()->pluck('category_id');
+                        if (!empty($listIDProduct))
+                        {
+                            $productSuggest = $this->product->whereIn('category_id',$listIDProduct)->limit(6)->get();
+                        }
+                    }
+                }
             }
 
-            return view('user.home.home', compact('sliders', 'categories', 'products', 'productRecommend', 'categoryLimit', 'carts'));
+            return view('user.home.home', compact('sliders', 'categories',
+                'products', 'productRecommend', 'categoryLimit', 'carts','productSuggest'));
         } catch (\Exception $exception) {
             abort(500);
         }
