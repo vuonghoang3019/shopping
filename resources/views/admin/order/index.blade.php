@@ -27,10 +27,22 @@
                             @foreach($orders as $order)
                                 <tr>
                                     <th scope="row">{{ $stt }}</th>
-                                    <td>{{ $order->customer->name }}</td>
+                                    <td>
+                                        @if(isset($order->customer->id))
+                                            {{ $order->customer->name }}
+                                        @else
+                                            {{ $order->user->name }}
+                                        @endif
+
+                                    </td>
                                     <td>{{ number_format($order->total) }} VNĐ</td>
                                     <td>
-                                        {{ $order->customer->email }}
+                                        @if(isset($order->customer->id))
+                                            {{ $order->customer->email }}
+                                        @else
+                                            {{ $order->user->email }}
+                                        @endif
+
                                     </td>
                                     <td>
                                         {{ $order->created_at->format('d-m-Y') }}

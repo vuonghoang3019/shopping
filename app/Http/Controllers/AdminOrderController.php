@@ -29,7 +29,7 @@ class AdminOrderController extends Controller
 
     public function index()
     {
-        $orders = $this->order->newQuery()->with(['customer'])->paginate(8);
+        $orders = $this->order->newQuery()->with(['customer','user'])->paginate(8);
         return view('admin.order.index', compact('orders'));
     }
     public function viewDetail(Request $request, $id)

@@ -4,11 +4,13 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Setting;
 use App\Models\Slider;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -19,14 +21,16 @@ class HomeController extends Controller
     private $product;
     private $setting;
     private $user;
-
-    public function __construct(Slider $slider, Category $category, Product $product, Setting $setting, User $user)
+    private $order;
+    public function __construct(Slider $slider, Category $category, Product $product,
+                                Setting $setting, User $user, Order $order)
     {
         $this->slider = $slider;
         $this->category = $category;
         $this->product = $product;
         $this->setting = $setting;
         $this->user = $user;
+        $this->order = $order;
     }
 
     public function index()
@@ -41,6 +45,15 @@ class HomeController extends Controller
             $products = $this->product->where('status', 1)->latest()->take(6)->get();
             $productRecommend = $this->product->latest('view', 'desc')->take(6)->get();
             $categoryLimit = $this->category->newQuery()->where('parent_id', 0)->with(['categoryChild'])->take(3)->get();
+            //check user login, chua dang nhap thi thoi
+            if (Auth::check())
+            {
+                $orders = $this->order->where([
+                    'status' => 1
+                ])->get();
+                dump($orders);
+            }
+
             return view('user.home.home', compact('sliders', 'categories', 'products', 'productRecommend', 'categoryLimit', 'carts'));
         } catch (\Exception $exception) {
             abort(500);
