@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fa93743-6951-465e-9dcf-5b97e74ff6f5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/user/home/components/productSuggest.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shopping.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shopping.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/user/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/user/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/home/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/home/home.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,6 +136,9 @@
       <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
       <path value="$PROJECT_DIR$/vendor/voku/portable-ascii" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/maximebf/debugbar" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
+      <path value="$PROJECT_DIR$/vendor/symfony/debug" />
     </include_path>
   </component>
   <component name="ProjectId" id="1qA0j5J4OMIUueVgSO2ZY54KpBb" />
@@ -151,7 +153,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sunword" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -196,7 +198,11 @@
       <workItem from="1617293690869" duration="197000" />
       <workItem from="1617295517643" duration="2694000" />
       <workItem from="1617328676568" duration="3524000" />
-      <workItem from="1617375746601" duration="5903000" />
+      <workItem from="1617375746601" duration="6919000" />
+      <workItem from="1617385349242" duration="238000" />
+      <workItem from="1617385658176" duration="101000" />
+      <workItem from="1617385991257" duration="8000" />
+      <workItem from="1617386001862" duration="242000" />
     </task>
     <servers />
   </component>
@@ -211,14 +217,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1617073384012" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1617297074801">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1617385997406">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1617297074801" />
-    <state x="277" y="57" key="SettingsEditor" timestamp="1617250792283">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1617385997406" />
+    <state x="277" y="57" key="SettingsEditor" timestamp="1617384928130">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1617250792283" />
+    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1617384928130" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1617162668537">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
