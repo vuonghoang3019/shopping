@@ -76,7 +76,7 @@ return [
 
 
          'admin' => [
-             'driver' => 'database',
+             'driver' => 'eloquent',
              'table' => \App\Http\Controllers\AdminControllerTest::class
          ],
     ],
