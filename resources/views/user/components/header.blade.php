@@ -62,14 +62,13 @@
                     <div class="shop-menu clearfix pull-right">
                         <ul class="nav navbar-nav">
                             @if(auth()->check())
-                                <li><a href=""><i class="fa fa-user"></i> {{ auth()->user()->name}}</a></li>
+                                <li><a href="{{ route('user.index') }}"><i class="fa fa-user"></i> {{ auth()->user()->name}}</a></li>
                                 <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="{{ route('showCart') }}"><span class="cartCount" >
                                                {{ isset($carts) ?  count($carts) : '0' }}
                                         </span><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                 <li><a href="{{ route('logout') }}"><i class="fa fa-lock"></i> Logout</a></li>
                             @else
-                                <li><a href="#"><i class="fa fa-user"></i> User </a></li>
                                 <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="{{ route('showCart') }}"><span class="cartCount" >
                                                {{ isset($carts) ?  count($carts) : '0' }}
