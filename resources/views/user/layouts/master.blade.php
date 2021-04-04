@@ -17,6 +17,7 @@
 <body>
 @include('user.components.header')
 @yield('content')
+
 @include('user.components.footer')
 </body>
 <script src="{{ asset('asset/js/jquery.js') }}"></script>
@@ -26,5 +27,16 @@
 <script src="{{ asset('asset/js/jquery.prettyPhoto.js') }}"></script>
 <script src="{{ asset('asset/js/main.js') }}"></script>
 <script src="{{ asset('asset/js/html5shiv.js') }}"></script>
+<script >
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/606822fff7ce18270936acda/1f2bchdsb';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+    })();
+</script>
 @yield('js')
 </html>
