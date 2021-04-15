@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="8fa93743-6951-465e-9dcf-5b97e74ff6f5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/storage/debugbar/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/slider/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/slider/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminUserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/product/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/product/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/user/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/user/add.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,8 +172,9 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sunword" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -169,7 +191,10 @@
       <recent name="D:\xampp\htdocs\shopping\resources\views\user" />
     </key>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="8fa93743-6951-465e-9dcf-5b97e74ff6f5" name="Default Changelist" comment="" />
@@ -214,12 +239,45 @@
       <workItem from="1617900782070" duration="1715000" />
       <workItem from="1617934970381" duration="587000" />
       <workItem from="1617935565098" duration="16000" />
-      <workItem from="1617935646955" duration="1806000" />
+      <workItem from="1617935646955" duration="3675000" />
+      <workItem from="1617955445183" duration="457000" />
+      <workItem from="1617955983631" duration="649000" />
+      <workItem from="1617972938326" duration="270000" />
+      <workItem from="1617973531537" duration="8304000" />
+      <workItem from="1617985124442" duration="833000" />
+      <workItem from="1617986343208" duration="69000" />
+      <workItem from="1617987441983" duration="406000" />
+      <workItem from="1618022577850" duration="3081000" />
+      <workItem from="1618040572401" duration="601000" />
+      <workItem from="1618047284742" duration="842000" />
+      <workItem from="1618105935836" duration="755000" />
+      <workItem from="1618204069612" duration="44000" />
+      <workItem from="1618233538753" duration="1113000" />
+      <workItem from="1618242670938" duration="2108000" />
+      <workItem from="1618279909288" duration="749000" />
+      <workItem from="1618280692485" duration="262000" />
+      <workItem from="1618368773840" duration="917000" />
+      <workItem from="1618407989380" duration="1287000" />
+      <workItem from="1618414738475" duration="3506000" />
+      <workItem from="1618453420711" duration="184000" />
+      <workItem from="1618455171282" duration="3014000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -229,10 +287,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1617073384012" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1617935579710">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1618455854860">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1617935579710" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1618455854860" />
     <state x="277" y="57" key="SettingsEditor" timestamp="1617384928130">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

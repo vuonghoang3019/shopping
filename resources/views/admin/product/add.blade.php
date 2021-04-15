@@ -47,7 +47,7 @@
                             <div class="form-group">
                                 <label for="">Ảnh đại diện</label>
                                 <input type="file" class="form-control-file @error('feature_image_path') is-invalid @enderror"
-                                       placeholder="Chọn ảnh đại diện"
+                                       placeholder="Cfeature_image_pathhọn ảnh đại diện"
                                        name="feature_image_path" value="{{ old('feature_image_path ') }}">
                                 @error('feature_image_path')
                                 <div class="alert alert-danger mt-2 px-2">{{ $message }}</div>
