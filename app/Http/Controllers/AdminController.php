@@ -6,6 +6,7 @@ use App\Models\Order;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
@@ -17,24 +18,25 @@ class AdminController extends Controller
     }
     public function index()
     {
-        if (auth()->check()) {
-            $moneyDay = $this->order->whereDay('updated_at',date('d'))->where('status',1)->sum('total');
-            $moneyMonth = $this->order->whereMonth('updated_at',date('m'))->where('status',1)->sum('total');
-            $dataMoney = [
-                [
-                    "name" => "Doanh thu ngày",
-                    "y" => (int)$moneyDay
-                ],
-                [
-                    "name" => "Doanh thu Thang",
-                    "y" => (int)$moneyMonth
-                ],
-            ];
-            $dataMoney = json_encode($dataMoney);
-            return view('dashboard',compact('dataMoney'));
-        } else {
-            return view('login');
-        }
+//        if (auth()->check()) {
+//
+//        } else {
+//            return view('login');
+//        }
+        $moneyDay = $this->order->whereDay('updated_at',date('d'))->where('status',1)->sum('total');
+        $moneyMonth = $this->order->whereMonth('updated_at',date('m'))->where('status',1)->sum('total');
+        $dataMoney = [
+            [
+                "name" => "Doanh thu ngày",
+                "y" => (int)$moneyDay
+            ],
+            [
+                "name" => "Doanh thu Thang",
+                "y" => (int)$moneyMonth
+            ],
+        ];
+        $dataMoney = json_encode($dataMoney);
+        return view('dashboard',compact('dataMoney'));
     }
 
     public function loginAdmin() // view form loign
@@ -57,7 +59,7 @@ class AdminController extends Controller
                 'email'    => $request->email,
                 'password' => $request->password
             ], $remember)) {
-                return redirect()->to('admin/dashboard');
+//                return redirect()->to('admin/dashboard');
             }
         } catch (\Exception $exception) {
             abort(500);

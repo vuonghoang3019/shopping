@@ -17,7 +17,6 @@
                     <!--feature Product-->
                 @include('user.home.components.productHaveSeen')
                 @include('user.home.components.featureProduct')
-                @include('user.home.components.productSuggest')
                 <!--End feature Product-->
 
                     <!--category-tab-->
