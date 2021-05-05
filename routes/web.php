@@ -102,7 +102,8 @@ Route::prefix('authenticate')->middleware('CheckLoginAdmin')->group( function ()
     Route::post('/login', 'AdminControllerTest@postLogin');
 });
 
-
+//export excel
+Route::get('/user/export', 'UserExportController@export');
 
 
 
