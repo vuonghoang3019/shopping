@@ -15,11 +15,11 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    @can('product-add')
+{{--                    @can('product-add')--}}
                         <div class="col-md-1 mb-2">
                             <a href="{{ route('products.create') }}" class="btn btn-success">ADD</a>
                         </div>
-                    @endcan
+{{--                    @endcan--}}
                     <div class="col-md-6">
                         <form class="form-inline ml-4">
                             <div class="form-group">
@@ -86,11 +86,11 @@
                                         </a>
                                     </td>
                                     <td>
-                                        @can('product-edit',$data->id)
+{{--                                        @can('product-edit',$data->id)--}}
                                             <a href="{{ route('products.edit',['id' => $data->id]) }}"
                                                class="btn btn-default">Edit
                                             </a>
-                                        @endcan
+{{--                                        @endcan--}}
                                         @can('product-delete')
                                             <a href=""
                                                data-url="{{ route('products.delete',['id' => $data->id]) }}"

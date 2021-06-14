@@ -4,7 +4,7 @@ Route::prefix('products')->group(function () {
     Route::get('/', [
         'as' => 'products.index',
         'uses' => 'AdminProductController@index',
-        'middleware' => 'can:product-list',
+//        'middleware' => 'can:product-list',
     ]);
     Route::get('/create', [
         'as' => 'products.create',
@@ -17,7 +17,7 @@ Route::prefix('products')->group(function () {
     Route::get('/edit/{id}',[
         'as' => 'products.edit',
         'uses' => 'AdminProductController@edit',
-        'middleware' => 'can:product-edit,id'
+//        'middleware' => 'can:product-edit,id'
     ]);
     Route::post('/update/{id}',[
         'as' => 'products.update',

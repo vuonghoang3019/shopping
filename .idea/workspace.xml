@@ -20,13 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8fa93743-6951-465e-9dcf-5b97e74ff6f5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shopping.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shopping.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/user/UserProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/user/UserProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/CheckLoginAdmin.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/permission.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/permission.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/permission/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/permission/add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/permission/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/permission/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/components/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/components/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminOrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Policies/ProductPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Policies/ProductPolicy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/product/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/product/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/product/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/product/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/menu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/components/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/components/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/admin/product.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin/product.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,6 +177,7 @@
       <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
       <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/vendor/olimortimer/laravelshoppingcart" />
     </include_path>
   </component>
   <component name="ProjectId" id="1qA0j5J4OMIUueVgSO2ZY54KpBb" />
@@ -332,7 +339,55 @@
       <workItem from="1621650269298" duration="703000" />
       <workItem from="1621653664094" duration="2000" />
       <workItem from="1621673740069" duration="856000" />
-      <workItem from="1621674634131" duration="2206000" />
+      <workItem from="1621674634131" duration="2500000" />
+      <workItem from="1621693926327" duration="29000" />
+      <workItem from="1621696539937" duration="67000" />
+      <workItem from="1621702351293" duration="572000" />
+      <workItem from="1621735215538" duration="637000" />
+      <workItem from="1621736891770" duration="1439000" />
+      <workItem from="1621741929175" duration="278000" />
+      <workItem from="1621788985645" duration="129000" />
+      <workItem from="1621844585289" duration="2922000" />
+      <workItem from="1621867040528" duration="107000" />
+      <workItem from="1621867209064" duration="2161000" />
+      <workItem from="1621909687180" duration="3296000" />
+      <workItem from="1621953504840" duration="9098000" />
+      <workItem from="1621994569565" duration="30000" />
+      <workItem from="1621999044474" duration="631000" />
+      <workItem from="1622450544119" duration="52000" />
+      <workItem from="1622601451612" duration="2562000" />
+      <workItem from="1622604214529" duration="49000" />
+      <workItem from="1622604298617" duration="3388000" />
+      <workItem from="1622619833114" duration="299000" />
+      <workItem from="1622640668105" duration="4289000" />
+      <workItem from="1622647905781" duration="259000" />
+      <workItem from="1622648186679" duration="1349000" />
+      <workItem from="1622685414427" duration="588000" />
+      <workItem from="1622686053587" duration="3843000" />
+      <workItem from="1622813583886" duration="157000" />
+      <workItem from="1622815921740" duration="1746000" />
+      <workItem from="1622819412701" duration="144000" />
+      <workItem from="1622861537689" duration="489000" />
+      <workItem from="1622998287130" duration="1219000" />
+      <workItem from="1623036258506" duration="380000" />
+      <workItem from="1623037143332" duration="727000" />
+      <workItem from="1623139582547" duration="1123000" />
+      <workItem from="1623141915715" duration="1738000" />
+      <workItem from="1623145771010" duration="738000" />
+      <workItem from="1623146519703" duration="13000" />
+      <workItem from="1623250394971" duration="2311000" />
+      <workItem from="1623312975500" duration="702000" />
+      <workItem from="1623339538332" duration="1376000" />
+      <workItem from="1623346991253" duration="27000" />
+      <workItem from="1623378227378" duration="45000" />
+      <workItem from="1623381188499" duration="4146000" />
+      <workItem from="1623397589256" duration="1246000" />
+      <workItem from="1623406282565" duration="90000" />
+      <workItem from="1623412485989" duration="264000" />
+      <workItem from="1623592196286" duration="108000" />
+      <workItem from="1623600630450" duration="651000" />
+      <workItem from="1623655608217" duration="1311000" />
+      <workItem from="1623659629573" duration="1867000" />
     </task>
     <servers />
   </component>
@@ -359,10 +414,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1617073384012" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1621498102079">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1623592315132">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1621498102079" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1623592315132" />
     <state x="277" y="57" key="SettingsEditor" timestamp="1617384928130">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -371,9 +426,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1617162668537" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1617073280358">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1623339624863">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1617073280358" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1623339624863" />
   </component>
 </project>
