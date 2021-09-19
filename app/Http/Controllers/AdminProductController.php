@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\Tag;
+use App\Repositories\Product\ProductRepositoryInterface;
 use App\Traits\DeleteModelTrait;
 use App\Traits\StorageImageTrait;
 use Illuminate\Http\Request;
@@ -15,46 +16,39 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 
-class AdminProductController extends Controller
-{
+class AdminProductController extends Controller {
     use StorageImageTrait;
     use DeleteModelTrait;
 
+    protected $productRepo;
     private $category;
     private $product;
     private $productImage;
     private $tag;
 
-    public function __construct(Category $category, Product $product, ProductImage $productImage, Tag $tag)
+    public function __construct(ProductRepositoryInterface $productRepo)
     {
-        $this->category = $category;
-        $this->product = $product;
-        $this->productImage = $productImage;
-        $this->tag = $tag;
+        $this->productRepo = $productRepo;
     }
 
     public function index(Request $request)
     {
-        $products = $this->product->latest()->paginate(5);
-        $htmlOption = $this->getCategory($parentID = '');
-        if ($request->search) $products = $this->product->newQuery()->
-        where('name', 'like', '%' . $request->search . '%')->paginate(5);
-        if ($request->category_id) $products = $this->product->newQuery()->
-        where('category_id', $request->category_id)->paginate(5);
-        return view('admin.product.index', compact('products', 'htmlOption'));
-    }
-
-    public function getCategory($parent_id)
-    {
-        $data = $this->category->all();
-        $recursive = new Recursive($data);
-        $htmlOption = $recursive->categoryRecursive($parent_id);
-        return $htmlOption;
+        $htmlOption = $this->productRepo->getCategory($parentID = '');
+//        if ($request->search)
+//        {
+//            $products = $this->product->newQuery()->where('name', 'like', '%' . $request->search . '%')->paginate(5);
+//        }
+//        if ($request->category_id)
+//        {
+//            $products = $this->product->newQuery()->where('category_id', $request->category_id)->paginate(5);
+//        }
+        $products = $this->productRepo->getProduct();
+        return view('admin.product.index', compact('products','htmlOption'));
     }
 
     public function create()
     {
-        $htmlOption = $this->getCategory($parentID = '');
+        $htmlOption = $this->productRepo->getCategory($parentID = '');
         return view('admin.product.add', compact('htmlOption'));
     }
 
@@ -95,7 +89,8 @@ class AdminProductController extends Controller
             }
             $product->tags()->attach($tagId);
             return redirect()->route('products.index');
-        } catch (\Exception $exception) {
+        }
+        catch (\Exception $exception) {
             Log::error('Message' . $exception->getMessage() . 'Line' . $exception->getLine());
         }
     }
@@ -107,8 +102,7 @@ class AdminProductController extends Controller
             $htmlOption = $this->getCategory($product->category_id);
             return view('admin.product.edit', compact('htmlOption', 'product'));
         }
-        catch (\Exception $exception)
-        {
+        catch (\Exception $exception) {
             abort(500);
         }
     }
@@ -155,7 +149,8 @@ class AdminProductController extends Controller
             $product->tags()->sync($tagId);
             DB::commit();
             return redirect()->route('products.index');
-        } catch (\Exception $exception) {
+        }
+        catch (\Exception $exception) {
             DB::rollBack();
             Log::error('Message' . $exception->getMessage() . 'Line' . $exception->getLine());
         }
@@ -165,6 +160,7 @@ class AdminProductController extends Controller
     {
         return $this->deleteModelTrait($id, $this->product);
     }
+
     public function action($id)
     {
         $product = $this->product->find($id);

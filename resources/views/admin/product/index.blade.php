@@ -79,25 +79,25 @@
                                         <img src="{{ $data->feature_image_path }}" width="100" height="100">
                                     </td>
                                     <td>{{ optional($data->category)->name }}</td>
-                                    <td>
-                                        <a href="{{ route('products.action',['id' => $data->id]) }}"
-                                           class="{{ $data->status == 1 ? 'btn btn-primary' : 'btn btn-default' }}">
-                                            {{ $data->status == 1 ? 'Show' : 'Not Show' }}
-                                        </a>
-                                    </td>
-                                    <td>
+{{--                                    <td>--}}
+{{--                                        <a href="{{ route('products.action',['id' => $data->id]) }}"--}}
+{{--                                           class="{{ $data->status == 1 ? 'btn btn-primary' : 'btn btn-default' }}">--}}
+{{--                                            {{ $data->status == 1 ? 'Show' : 'Not Show' }}--}}
+{{--                                        </a>--}}
+{{--                                    </td>--}}
+{{--                                    <td>--}}
 {{--                                        @can('product-edit',$data->id)--}}
-                                            <a href="{{ route('products.edit',['id' => $data->id]) }}"
-                                               class="btn btn-default">Edit
-                                            </a>
+{{--                                            <a href="{{ route('products.edit',['id' => $data->id]) }}"--}}
+{{--                                               class="btn btn-default">Edit--}}
+{{--                                            </a>--}}
 {{--                                        @endcan--}}
-                                        @can('product-delete')
-                                            <a href=""
-                                               data-url="{{ route('products.delete',['id' => $data->id]) }}"
-                                               class="btn btn-danger action-delete">Delete
-                                            </a>
-                                        @endcan
-                                    </td>
+{{--                                        @can('product-delete')--}}
+{{--                                            <a href=""--}}
+{{--                                               data-url="{{ route('products.delete',['id' => $data->id]) }}"--}}
+{{--                                               class="btn btn-danger action-delete">Delete--}}
+{{--                                            </a>--}}
+{{--                                        @endcan--}}
+{{--                                    </td>--}}
                                 </tr>
                                 <?php $stt++; ?>
                             @endforeach
