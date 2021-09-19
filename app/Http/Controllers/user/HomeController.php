@@ -24,6 +24,7 @@ class HomeController extends Controller
     private $user;
     private $order;
     private $order_items;
+
     public function __construct(Slider $slider, Category $category, Product $product,
                                 Setting $setting, User $user, Order $order, OrderItem $order_items)
     {
@@ -38,38 +39,33 @@ class HomeController extends Controller
 
     public function index()
     {
-
-            $carts = session()->get('cart');
-            $sliders = $this->slider->latest()->take(3)->get();
-            $categories = $this->category->newQuery()->where('parent_id', 0)->where('home', 1
-            )->with(['categoryChild'])->get();
-            $products = $this->product->where('status', 1)->latest()->take(6)->get();
-            $productRecommend = $this->product->latest('view', 'desc')->take(6)->get();
-            $categoryLimit = $this->category->newQuery()->where('parent_id', 0)->with(['categoryChild'])->take(3)->get();
-            //check user login, chua dang nhap thi thoi
-            //C2: Luc mua hang thanh cong, luu vao 1 list nhung danh muc san pham da mua vao bang don hang.
-            if (Auth::check())
-            {
-                $orders = $this->order->where([
-                    'user_id' => \auth()->user()->id,
-                    'status' => 1
-                ])->pluck('id');
-                if (!empty($orders))
-                {
-                    $listID = $this->order_items->whereIn('order_id',$orders)->distinct()->pluck('product_id');
-                    if (!empty($listID))
-                    {
-                        $listIDProduct = $this->product->whereIn('id',$listID)->distinct()->pluck('category_id');
-                        if (!empty($listIDProduct))
-                        {
-                            $productSuggest = $this->product->whereIn('category_id',$listIDProduct)->limit(6)->get();
-                        }
+        $carts = session()->get('cart');
+        $sliders = $this->slider->latest()->take(3)->get();
+        $categories = $this->category->newQuery()->where('parent_id', 0)->where('home', 1
+        )->with(['categoryChild'])->get();
+        $products = $this->product->where('status', 1)->latest()->take(6)->get();
+        $productRecommend = $this->product->latest('view', 'desc')->take(6)->get();
+        $categoryLimit = $this->category->newQuery()->where('parent_id', 0)->with(['categoryChild'])->take(3)->get();
+        //check user login, chua dang nhap thi thoi
+        //C2: Luc mua hang thanh cong, luu vao 1 list nhung danh muc san pham da mua vao bang don hang.
+        if (Auth::check()) {
+            $orders = $this->order->where([
+                'user_id' => \auth()->user()->id,
+                'status'  => 1
+            ])->pluck('id');
+            if (!empty($orders)) {
+                $listID = $this->order_items->whereIn('order_id', $orders)->distinct()->pluck('product_id');
+                if (!empty($listID)) {
+                    $listIDProduct = $this->product->whereIn('id', $listID)->distinct()->pluck('category_id');
+                    if (!empty($listIDProduct)) {
+                        $productSuggest = $this->product->whereIn('category_id', $listIDProduct)->limit(6)->get();
                     }
                 }
             }
+        }
 
-            return view('user.home.home', compact('sliders', 'categories',
-                'products', 'productRecommend', 'categoryLimit', 'carts'));
+        return view('user.home.home', compact('sliders', 'categories',
+            'products', 'productRecommend', 'categoryLimit', 'carts'));
 
     }
 
@@ -90,7 +86,8 @@ class HomeController extends Controller
                 'email'    => $request->email
             ]);
             return redirect()->route('login');
-        } catch (\Exception $exception) {
+        }
+        catch (\Exception $exception) {
             abort(500);
         }
     }
@@ -104,7 +101,8 @@ class HomeController extends Controller
             ])) {
                 return redirect()->route('home');
             }
-        } catch (\Exception $exception) {
+        }
+        catch (\Exception $exception) {
             abort(500);
         }
     }
@@ -119,8 +117,8 @@ class HomeController extends Controller
     {
         if ($request->ajax()) {
             $listID = $request->id;
-            $products = $this->product->whereIn('id',$listID)->get();
-            $html = view('user.home.components.productHaveSeen',compact('products'))->render();
+            $products = $this->product->whereIn('id', $listID)->get();
+            $html = view('user.home.components.productHaveSeen', compact('products'))->render();
             return response()->json([
                 'data' => $html
             ]);

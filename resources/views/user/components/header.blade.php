@@ -37,23 +37,12 @@
                     <div class="btn-group pull-right clearfix">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                USA
+                                Language
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a href="">Canada</a></li>
-                                <li><a href="">UK</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                DOLLAR
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="">Canadian Dollar</a></li>
-                                <li><a href="">Pound</a></li>
+                                <li><a href="{!! route('change-language', ['vi']) !!}">VN</a></li>
+                                <li><a href="{!! route('change-language', ['en']) !!}">EN</a></li>
                             </ul>
                         </div>
                     </div>
